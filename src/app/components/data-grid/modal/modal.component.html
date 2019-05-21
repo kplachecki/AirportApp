@@ -1,7 +1,19 @@
 <div class="modal-container">
     <header class="modal-header">
-        <label>Registration</label>
-        <label>18/15/19</label>
+        <div class="header-rows">
+            <span class="header-row-1"
+                >{{ rowData.flightNumber }} Registration</span
+            ><span class="header-row-2"
+                >{{ rowData.scheduledDate | date: "dd/MM/yy" }} -
+                {{ rowData.scheduledDate | date: "hh:mm" }}</span
+            >
+        </div>
+        <div class="header-close">
+            <span>&#10006;</span>
+        </div>
     </header>
-    <input />
+    <div class="centre-frame">
+        <p class="registration-label">Registration</p>
+        <input class="registration-input" />
+    </div>
 </div>
