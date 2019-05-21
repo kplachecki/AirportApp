@@ -1,9 +1,10 @@
-<grid-header
-    [headers]="sampleHeaders"
-></grid-header>
+<grid-header [headers]="sampleHeaders"></grid-header>
+<grid-modal *ngIf="rowData"></grid-modal>
 <div *ngIf="rows">
-    <data-row *ngFor="let row of rows"
+    <data-row
+        *ngFor="let row of rows"
         [row]="row"
+        (clicked)="openModal($event)"
     >
     </data-row>
 </div>

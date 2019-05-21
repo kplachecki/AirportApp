@@ -1,15 +1,22 @@
-import {
-    Component,
-    Input
-} from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { IFlight } from "src/app/models/flight.interface";
 
 @Component({
-  selector: "data-grid",
-  templateUrl: "./data-grid.component.html",
-  styleUrls: ["./data-grid.component.css"]
+    selector: "data-grid",
+    templateUrl: "./data-grid.component.html",
+    styleUrls: ["./data-grid.component.css"]
 })
 export class DataGridComponent {
+    rowData = undefined;
+    openModal(data) {
+        this.rowData = data;
+    }
     @Input() public rows: Array<IFlight>;
-    public sampleHeaders = ["flight", "sch. date", "sch.time", "o/d", "registration"];
+    public sampleHeaders = [
+        "flight",
+        "sch. date",
+        "sch.time",
+        "o/d",
+        "registration"
+    ];
 }
