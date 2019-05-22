@@ -1,3 +1,4 @@
+<div class="backdrop" (click)="onModalClose()"></div>
 <div class="modal-container">
     <header class="modal-header">
         <div class="header-rows">
@@ -9,11 +10,11 @@
             >
         </div>
         <div class="header-close">
-            <span>&#10006;</span>
+            <span (click)="onModalClose()">&#10006;</span>
         </div>
     </header>
     <div class="centre-frame">
-        <p class="registration-label">Registration</p>
+        <label class="registration-label">Registration</label>
         <input class="registration-input" />
     </div>
 </div>

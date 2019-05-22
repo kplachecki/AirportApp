@@ -7,9 +7,11 @@ import { IFlight } from "src/app/models/flight.interface";
     styleUrls: ["./row.component.css"]
 })
 export class RowComponent {
-    @Output() clicked = new EventEmitter();
+    @Output() rowClicked = new EventEmitter();
+
     onRegistrationClicked() {
-        this.clicked.emit(this.row);
+        this.rowClicked.emit(this.row);
     }
+
     @Input() row: IFlight;
 }

@@ -8,9 +8,17 @@ import { IFlight } from "src/app/models/flight.interface";
 })
 export class DataGridComponent {
     rowData = undefined;
+    modalVisible = false;
+
     openModal(data) {
         this.rowData = data;
+        this.modalVisible = true;
     }
+
+    closeModal(modalVisible) {
+        this.modalVisible = modalVisible;
+    }
+
     @Input() public rows: Array<IFlight>;
     public sampleHeaders = [
         "flight",

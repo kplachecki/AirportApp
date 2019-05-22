@@ -1,11 +1,14 @@
-<div class="backdrop" *ngIf="rowData" (click)="rowData = undefined"></div>
 <grid-header [headers]="sampleHeaders"></grid-header>
-<grid-modal *ngIf="rowData" [rowData]="rowData"></grid-modal>
+<grid-modal
+    *ngIf="modalVisible"
+    [rowData]="rowData"
+    (modalClosed)="closeModal($event)"
+></grid-modal>
 <div *ngIf="rows">
     <data-row
         *ngFor="let row of rows"
         [row]="row"
-        (clicked)="openModal($event)"
+        (rowClicked)="openModal($event)"
     >
     </data-row>
 </div>
