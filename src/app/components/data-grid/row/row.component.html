@@ -11,7 +11,15 @@
     <div class="row-cell">
         <p>{{ row.originDestination }}</p>
     </div>
-    <div class="row-cell" (click)="onRegistrationClicked()">
+    <div
+        class="row-cell"
+        (click)="onRegistrationClicked()"
+        (mouseover)="hover = true"
+        (mouseleave)="hover = false"
+        [ngStyle]="{
+            cursor: hover == true ? 'pointer' : 'none'
+        }"
+    >
         <p *ngIf="row.registration === '' || row.registration === null">
             ...........
         </p>

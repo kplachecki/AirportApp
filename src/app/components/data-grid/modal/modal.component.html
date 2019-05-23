@@ -1,5 +1,5 @@
 <div class="backdrop" (click)="onModalClose()"></div>
-<div class="modal-container">
+<div class="modal-container" (click)="onListClose()">
     <header class="modal-header">
         <div class="header-rows">
             <span class="header-row-1"
@@ -18,25 +18,31 @@
         <input
             class="registration-input"
             type="text"
-            [(ngModel)]="registrationNumberCreator"
-            list="arrayOfRegistrations"
-        /><datalist
-            id="arrayOfRegistrations"
-            *ngIf="registrationNumber.length >= 2"
+            (keyup)="onKey()"
+            [(ngModel)]="registrationNumber"
+            list="filteredArray"
+        />
+        <div
+            class="data-list"
+            *ngIf="registrationNumber.length >= 2 && listVisible"
         >
-            <option value="registration"></option>
-            <option
-                *ngFor="let number of arrayOfRegistrations"
-                [value]="number"
-            ></option>
-        </datalist>
+            <label class="data-list-header"
+                ><span [ngStyle]="{ 'font-weight': 'bold' }">REGISTRATION</span>
+                &#160;({{ filteredArray.length }})
+            </label>
+            <label
+                *ngFor="let element of filteredArray"
+                (click)="onSelection($event)"
+                >{{ element }}</label
+            >
+        </div>
     </div>
     <footer class="modal-footer">
-        <div class="button-cancel" (click)="onModalClose()">
-            <button>cancel</button>
+        <div class="button-cancel">
+            <button (click)="onModalClose()">cancel</button>
         </div>
-        <div class="button-save" (click)="onSaveChanges()">
-            <button>save</button>
+        <div class="button-save">
+            <button (click)="onSaveChanges()">save</button>
         </div>
     </footer>
 </div>

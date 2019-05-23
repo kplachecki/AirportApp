@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { IFlight } from "src/app/models/flight.interface";
-import csvData from "../assets/mock-data/mockFlights.json";
 
 @Component({
     encapsulation: ViewEncapsulation.None,
@@ -11,8 +10,10 @@ import csvData from "../assets/mock-data/mockFlights.json";
 export class AppComponent {
     newData = {};
     dataObject = [];
+    jsonFlights = require("../assets/mock-data/mockFlights.json");
+
     ngOnInit() {
-        csvData.map(row => {
+        this.jsonFlights.map(row => {
             return this.dataObject.push(
                 (this.newData = {
                     flightNumber: row.FlightNumber,
@@ -24,18 +25,4 @@ export class AppComponent {
         });
     }
     public data: Array<IFlight> = this.dataObject;
-    // [
-    //     {
-    //         flightNumber: "dadda",
-    //         scheduledDate: new Date(),
-    //         originDestination: "Wroclaw",
-    //         registration: "sfsf"
-    //     },
-    //     {
-    //         flightNumber: "sd",
-    //         scheduledDate: new Date(),
-    //         originDestination: "sdw",
-    //         registration: "saaaf"
-    //     }
-    // ];
 }
