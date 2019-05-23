@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import jsonOfRegistrations from "../../../../assets/mock-data/mockRegistrations.json";
 
 @Component({
     selector: "grid-modal",
@@ -7,17 +6,37 @@ import jsonOfRegistrations from "../../../../assets/mock-data/mockRegistrations.
     styleUrls: ["./modal.component.css"]
 })
 export class ModalComponent {
+    jsonOfRegistrations = require("../../../../assets/mock-data/mockRegistrations.json");
     arrayOfRegistrations = [];
     ngOnInit() {
-        jsonOfRegistrations.map(registrationNumber => {
+        this.jsonOfRegistrations.map(registrationNumber => {
             this.arrayOfRegistrations.push(
                 registrationNumber.Registration.toString()
             );
         });
     }
+
+    listVisible = false;
+    onSelection(event) {
+        this.registrationNumber = event.target.outerText;
+        this.listVisible = false;
+    }
+
+    onListClose() {
+        this.listVisible = false;
+    }
+
     registrationNumber;
-    registrationNumberCreator() {
-        this.registrationNumber;
+    registration = "";
+    filteredArray = [];
+
+    onKey() {
+        this.filteredArray = this.arrayOfRegistrations.filter(element => {
+            if (element.includes(this.registrationNumber.toUpperCase())) {
+                return true;
+            } else return false;
+        });
+        this.listVisible = true;
     }
 
     ngAfterContentInit() {
