@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { IFlight } from "src/app/models/flight.interface";
-import csvData from "../assets/mock-data/csvjson.json";
+import csvData from "../assets/mock-data/mockFlights.json";
 
 @Component({
     encapsulation: ViewEncapsulation.None,

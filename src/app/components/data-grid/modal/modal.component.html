@@ -15,6 +15,28 @@
     </header>
     <div class="centre-frame">
         <label class="registration-label">Registration</label>
-        <input class="registration-input" />
+        <input
+            class="registration-input"
+            type="text"
+            [(ngModel)]="registrationNumberCreator"
+            list="arrayOfRegistrations"
+        /><datalist
+            id="arrayOfRegistrations"
+            *ngIf="registrationNumber.length >= 2"
+        >
+            <option value="registration"></option>
+            <option
+                *ngFor="let number of arrayOfRegistrations"
+                [value]="number"
+            ></option>
+        </datalist>
     </div>
+    <footer class="modal-footer">
+        <div class="button-cancel" (click)="onModalClose()">
+            <button>cancel</button>
+        </div>
+        <div class="button-save" (click)="onSaveChanges()">
+            <button>save</button>
+        </div>
+    </footer>
 </div>
